@@ -1,5 +1,7 @@
 package main
 
-func strStr(haystack string, needle string) int {
+import "strings"
 
+func strStr(haystack string, needle string) int {
+	return strings.Index(haystack, needle)
 }
