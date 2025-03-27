@@ -1,33 +1,26 @@
 package main
 
 type BSTIterator struct {
-	p  int
-	ns []*TreeNode
+	stack []*TreeNode
+	cur   *TreeNode
 }
 
 func Constructor(root *TreeNode) BSTIterator {
-	i := BSTIterator{}
-	var midorder func(r *TreeNode)
-	midorder = func(r *TreeNode) {
-		if r == nil {
-			return
-		}
-		midorder(r.Left)
-		i.ns = append(i.ns, r)
-		midorder(r.Right)
-	}
-	midorder(root)
-	return i
+	return BSTIterator{cur: root}
 }
 
-func (i *BSTIterator) Next() int {
-	val := i.ns[i.p].Val
-	i.p++
+func (it *BSTIterator) Next() int {
+	for node := it.cur; node != nil; node = node.Left {
+		it.stack = append(it.stack, node)
+	}
+	it.cur, it.stack = it.stack[len(it.stack)-1], it.stack[:len(it.stack)-1]
+	val := it.cur.Val
+	it.cur = it.cur.Right
 	return val
 }
 
-func (i *BSTIterator) HasNext() bool {
-	return i.p != len(i.ns)
+func (it *BSTIterator) HasNext() bool {
+	return it.cur != nil || len(it.stack) > 0
 }
 
 /**
