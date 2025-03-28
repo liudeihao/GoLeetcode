@@ -2,14 +2,11 @@ package main
 
 type Trie struct {
 	children [26]*Trie
-	isEnd    bool
+	word     string // 基于前缀树，学习一下。
 }
 
-func Construct() Trie {
-	return Trie{}
-}
-
-func (t *Trie) Insert(s []byte) {
+func (t *Trie) Insert(s string) {
+	// 还是用string吧
 	node := t
 	for _, ch := range s {
 		ch -= 'a'
@@ -18,74 +15,58 @@ func (t *Trie) Insert(s []byte) {
 		}
 		node = node.children[ch]
 	}
-	node.isEnd = true
+	node.word = s
 }
 
-func (t *Trie) SearchPrefix(s []byte) *Trie {
-	node := t
-	for _, ch := range s {
-		ch -= 'a'
-		if node.children[ch] == nil {
-			return nil
-		}
-		node = node.children[ch]
-	}
-	return node
-}
-
-func (t *Trie) Search(s []byte) (isPrefix, isEnd bool) {
-	node := t.SearchPrefix(s)
-	return node != nil, node != nil && node.isEnd
-}
+// 这个我会
+var dirs = []struct {
+	x, y int
+}{{-1, 0}, {0, -1}, {0, 1}, {1, 0}}
 
 func findWords(board [][]byte, words []string) []string {
-	t := Construct()
+	t := &Trie{}
 	for _, word := range words {
-		t.Insert([]byte(word))
+		t.Insert(word)
 	}
 	m, n := len(board), len(board[0])
-	all := map[string]bool{}
-	dx := [...]int{-1, 0, 0, 1}
-	dy := [...]int{0, -1, 1, 0}
-	var v [12][12]bool
+	seen := map[string]bool{}
+
+	var dfs func(*Trie, int, int)
+	dfs = func(node *Trie, x, y int) {
+		// 确实形参取名x，y更好一些
+		ch := board[x][y]
+		node = node.children[ch-'a']
+		if node == nil {
+			return
+		}
+		// 你看，这样就不用给Trie写Search了
+		if node.word != "" {
+			seen[node.word] = true
+		}
+		// 你看，这样就不用写visited了
+		board[x][y] = '#'
+		for _, d := range dirs {
+			// 这个命名为nx，ny也很好
+			nx, ny := x+d.x, y+d.y
+			if nx < 0 || ny < 0 || nx >= m || ny >= n || board[nx][ny] == '#' {
+				continue
+			}
+			// 而且这样不用每次从树顶遍历，还省去了你写的stack，这一点很重要！
+			// 因为很重要所以我这里加了两行注释！
+			dfs(node, nx, ny)
+		}
+		// 这就是回溯
+		board[x][y] = ch
+	}
+
 	for i := range m {
 		for j := range n {
-			s := []byte{board[i][j]}
-			v[i][j] = true
-			found := map[string]bool{}
-			var dfs func(int, int, []byte, [12][12]bool)
-			dfs = func(i, j int, s []byte, v [12][12]bool) {
-				if found[string(s)] {
-					return
-				}
-				isPrefix, isEnd := t.Search(s)
-				if !isPrefix {
-					return
-				}
-				if isEnd {
-					found[string(s)] = true
-				}
-				for k := range 4 {
-					x, y := i+dx[k], j+dy[k]
-					if x < 0 || y < 0 || x >= m || y >= n || v[x][y] {
-						continue
-					}
-					s0 := append(s, board[x][y])
-					v[x][y] = true
-					dfs(x, y, s0, v)
-					v[x][y] = false
-				}
-			}
-			dfs(i, j, s, v)
-			v[i][j] = false
-			for k := range found {
-				all[k] = true
-			}
+			dfs(t, i, j)
 		}
 	}
-	var ans []string
-	for k := range all {
-		ans = append(ans, k)
+	ans := make([]string, 0, len(seen))
+	for s := range seen {
+		ans = append(ans, s)
 	}
 	return ans
 }
