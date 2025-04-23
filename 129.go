@@ -1,32 +1,18 @@
 package main
 
 func sumNumbers(root *TreeNode) int {
-	var sum int
-	path := []int{root.Val}
-	var dfs func(*TreeNode)
-	dfs = func(r *TreeNode) {
-		if r.Left == nil && r.Right == nil {
-			var cur int
-			for _, i := range path {
-				cur = cur*10 + i
-			}
-			sum += cur
-			return
+	var dfs func(*TreeNode, int) int
+	dfs = func(root *TreeNode, prevSum int) int {
+		if root == nil {
+			return 0
 		}
-		if r.Left != nil {
-			path = append(path, r.Left.Val)
-			dfs(r.Left)
-			path = path[:len(path)-1]
+		sum := prevSum*10 + root.Val
+		if root.Left == nil && root.Right == nil {
+			return sum
 		}
-		if r.Right != nil {
-			path = append(path, r.Right.Val)
-			dfs(r.Right)
-			path = path[:len(path)-1]
-
-		}
+		return dfs(root.Left, sum) + dfs(root.Right, sum)
 	}
-	dfs(root)
-	return sum
+	return dfs(root, 0)
 }
 
 /*
