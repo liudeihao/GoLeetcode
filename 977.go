@@ -1,37 +1,21 @@
 package main
 
-import "sort"
+import "slices"
 
 func sortedSquares(nums []int) []int {
 	n := len(nums)
-	ans := make([]int, n)
-	var first int
-	if nums[0] < 0 {
-		first = sort.Search(n, func(i int) bool {
-			return nums[i] > 0
-		})
-	}
-	neg, pos := first-1, first
-	p := 0
-	for neg >= 0 && pos <= n-1 {
-		if nums[neg]*nums[neg] < nums[pos]*nums[pos] {
-			ans[p] = nums[neg] * nums[neg]
-			neg--
+	var ans []int
+	l, r := 0, n-1
+	for l <= r {
+		ls, rs := nums[l]*nums[l], nums[r]*nums[r]
+		if ls > rs {
+			ans = append(ans, ls)
+			l++
 		} else {
-			ans[p] = nums[pos] * nums[pos]
-			pos++
+			ans = append(ans, rs)
+			r--
 		}
-		p++
 	}
-	for neg >= 0 {
-		ans[p] = nums[neg] * nums[neg]
-		neg--
-		p++
-	}
-	for pos <= n-1 {
-		ans[p] = nums[pos] * nums[pos]
-		pos++
-		p++
-	}
+	slices.Reverse(ans)
 	return ans
 }
