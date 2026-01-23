@@ -1,7 +1,7 @@
 package main
 
 // 动态规划
-func maxProfit(prices []int) int {
+func maxProfit_121(prices []int) int {
 	dp := make([][2]int, len(prices)+1)
 	// dp[i][0]为第i天持有股票
 	// dp[i][1]为第i天不持有股票

@@ -1,27 +1,18 @@
 package main
 
 func canCompleteCircuit(gas []int, cost []int) int {
-	for start, n := 0, len(gas); start < n; {
-		gasSum, costSum := 0, 0
-		step := 0
-		for step < n {
-			if step == n {
-				return start
-			}
-			idx := (start + step) % n
-			gasSum += gas[idx]
-			costSum += cost[idx]
-
-			if costSum > gasSum {
-				break
-			}
-			step++
-		}
-		if step == n {
-			return start
-		} else {
-			start = start + step + 1
+	res, total := 0, 0
+	var ans int
+	for i := 0; i < len(gas); i++ {
+		total += gas[i] - cost[i]
+		res += gas[i] - cost[i]
+		if res < 0 {
+			ans = i + 1
+			res = 0
 		}
 	}
-	return -1
+	if total < 0 {
+		return -1
+	}
+	return ans
 }

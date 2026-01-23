@@ -1,6 +1,6 @@
 package main
 
-func maxProfit(k int, prices []int) int {
+func maxProfit_188(k int, prices []int) int {
 	n := len(prices)
 	buy := make([]int, k)
 	sell := make([]int, k)

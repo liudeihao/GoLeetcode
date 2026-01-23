@@ -1,6 +1,6 @@
 package main
 
-func rob(nums []int) int {
+func rob_213(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
 	}

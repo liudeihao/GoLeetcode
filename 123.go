@@ -1,6 +1,6 @@
 package main
 
-func maxProfit(prices []int) int {
+func maxProfit_123(prices []int) int {
 	// 三种状态：
 	// 0. 持有股票，之前没卖出过
 	// 1. 不持有股票，之前没卖出过

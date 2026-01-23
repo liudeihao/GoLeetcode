@@ -1,20 +1,20 @@
 package main
 
-type Node struct {
+type Node_138 struct {
 	Val    int
-	Next   *Node
-	Random *Node
+	Next   *Node_138
+	Random *Node_138
 }
 
-func copyRandomList(head *Node) *Node {
+func copyRandomList(head *Node_138) *Node_138 {
 	if head == nil {
 		return nil
 	}
-	nodeIndex := make(map[*Node]int)
-	var newNodes []*Node
+	nodeIndex := make(map[*Node_138]int)
+	var newNodes []*Node_138
 	for i, p := 0, head; p != nil; p = p.Next {
 		nodeIndex[p] = i
-		newNodes = append(newNodes, &Node{Val: p.Val, Random: p.Random})
+		newNodes = append(newNodes, &Node_138{Val: p.Val, Random: p.Random})
 		if i > 0 {
 			newNodes[i-1].Next = newNodes[i]
 		}

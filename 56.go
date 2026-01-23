@@ -5,7 +5,7 @@ import (
 	"slices"
 )
 
-func merge(intervals [][]int) [][]int {
+func merge_56(intervals [][]int) [][]int {
 	slices.SortFunc(intervals, func(x, y []int) int {
 		if x[0] == y[0] {
 			return cmp.Compare(x[1], y[1])

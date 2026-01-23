@@ -1,6 +1,6 @@
 package main
 
-func maxDepth(root *TreeNode) int {
+func maxDepth_104(root *TreeNode) int {
 
 	if root == nil {
 		return 0

@@ -12,9 +12,7 @@ func splitWords(s string) [][]byte {
 		for start < n && s[start] == ' ' {
 			start++
 		}
-		for end < n && s[end] == ' ' {
-			end++
-		}
+		end = start
 		for end < n && s[end] != ' ' {
 			end++
 		}

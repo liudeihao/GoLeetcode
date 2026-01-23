@@ -1,27 +1,27 @@
 package main
 
-type Trie struct {
-	children [26]*Trie
+type Trie_208 struct {
+	children [26]*Trie_208
 	isEnd    bool // 这是和一般多叉树不一样的地方（他们都是val int)
 }
 
-func Constructor() Trie {
-	return Trie{}
+func Constructor_208() Trie_208 {
+	return Trie_208{}
 }
 
-func (t *Trie) Insert(word string) {
+func (t *Trie_208) Insert(word string) {
 	node := t
 	for _, ch := range word {
 		ch -= 'a'
 		if node.children[ch] == nil {
-			node.children[ch] = &Trie{}
+			node.children[ch] = &Trie_208{}
 		}
 		node = node.children[ch]
 	}
 	node.isEnd = true
 }
 
-func (t *Trie) SearchPrefix(prefix string) *Trie {
+func (t *Trie_208) SearchPrefix(prefix string) *Trie_208 {
 	node := t
 	for _, ch := range prefix {
 		ch -= 'a'
@@ -33,12 +33,12 @@ func (t *Trie) SearchPrefix(prefix string) *Trie {
 	return node
 }
 
-func (t *Trie) Search(word string) bool {
+func (t *Trie_208) Search(word string) bool {
 	node := t.SearchPrefix(word)
 	return node != nil && node.isEnd
 }
 
-func (t *Trie) StartsWith(prefix string) bool {
+func (t *Trie_208) StartsWith(prefix string) bool {
 	return t.SearchPrefix(prefix) != nil
 }
 

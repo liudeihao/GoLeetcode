@@ -8,7 +8,7 @@ type LRUCache struct {
 	v        map[int]int // 记录值
 }
 
-func Constructor(capacity int) LRUCache {
+func Constructor_146(capacity int) LRUCache {
 	return LRUCache{
 		make([]int, 0, capacity),
 		capacity,

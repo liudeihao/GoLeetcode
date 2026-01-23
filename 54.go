@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /*
 func spiralOrder(matrix [][]int) []int {
     if len(matrix) == 0 || len(matrix[0]) == 0 {
@@ -74,10 +72,4 @@ func spiralOrder(matrix [][]int) []int {
 		}
 	}
 	return ans
-}
-
-func main() {
-	for i := range 1 {
-		fmt.Println(i)
-	}
 }

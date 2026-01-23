@@ -1,17 +1,16 @@
 package main
 
-type Node struct {
+type Node_559 struct {
 	Val      int
-	Children []*Node
+	Children []*Node_559
 }
 
-func maxDepth(root *Node) int {
-
+func maxDepth(root *Node_559) int {
 	if root == nil {
 		return 0
 	}
 	var ans int
-	var q []*Node
+	var q []*Node_559
 	q = append(q, root)
 	for len(q) != 0 {
 		ans++

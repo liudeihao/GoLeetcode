@@ -7,7 +7,7 @@ type RandomizedSet struct {
 	set map[int]int
 }
 
-func Constructor() RandomizedSet {
+func Constructor_380() RandomizedSet {
 	return RandomizedSet{
 		arr: []int{},
 		set: map[int]int{},

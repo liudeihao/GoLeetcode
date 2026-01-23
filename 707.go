@@ -1,20 +1,18 @@
 package main
 
-import "fmt"
-
-type Node struct {
+type Node_707 struct {
 	Val  int
-	Next *Node
+	Next *Node_707
 }
 
 type MyLinkedList struct {
-	dummy *Node
-	tail  *Node
+	dummy *Node_707
+	tail  *Node_707
 	len   int
 }
 
-func Constructor() MyLinkedList {
-	dummy := &Node{}
+func Constructor_707() MyLinkedList {
+	dummy := &Node_707{}
 
 	return MyLinkedList{
 		dummy: dummy,
@@ -35,7 +33,7 @@ func (this *MyLinkedList) Get(index int) int {
 }
 
 func (this *MyLinkedList) AddAtHead(val int) {
-	newNode := &Node{val, this.dummy.Next}
+	newNode := &Node_707{val, this.dummy.Next}
 	this.dummy.Next = newNode
 	if newNode.Next == nil {
 		this.tail = newNode
@@ -44,7 +42,7 @@ func (this *MyLinkedList) AddAtHead(val int) {
 }
 
 func (this *MyLinkedList) AddAtTail(val int) {
-	this.tail.Next = &Node{val, nil}
+	this.tail.Next = &Node_707{val, nil}
 	this.tail = this.tail.Next
 	this.len++
 }
@@ -62,7 +60,7 @@ func (this *MyLinkedList) AddAtIndex(index int, val int) {
 		p = p.Next
 		index--
 	}
-	newNode := &Node{val, p.Next}
+	newNode := &Node_707{val, p.Next}
 	p.Next = newNode
 	this.len++
 }
@@ -81,22 +79,4 @@ func (this *MyLinkedList) DeleteAtIndex(index int) {
 	}
 	p.Next = p.Next.Next
 	this.len--
-}
-
-func main() {
-	obj := Constructor()
-	fmt.Println(obj.Get(0))
-
-	obj.AddAtHead(10)
-	fmt.Println(obj.Get(0))
-
-	obj.AddAtTail(20)
-	fmt.Println(obj.Get(0))
-	fmt.Println(obj.Get(1))
-
-	obj.AddAtIndex(0, 50)
-	obj.DeleteAtIndex(2)
-	fmt.Println(obj.Get(0))
-	fmt.Println(obj.Get(1))
-
 }

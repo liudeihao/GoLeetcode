@@ -1,18 +1,9 @@
 package main
 
-var sm = map[int]string{
-	4:   "IV", //4
-	9:   "IX", //9
-	40:  "XL", // 40
-	90:  "XC", // 90
-	400: "CD", // 400
-	900: "CM", // 900
-}
-
-var cs = []string{"I", "V", "X", "L", "C", "D", "M"}
-var ns = []int{1, 5, 10, 50, 100, 500, 1000}
-
 func getBiggest(num int) (int, string) {
+	var cs = []string{"I", "V", "X", "L", "C", "D", "M"}
+	var ns = []int{1, 5, 10, 50, 100, 500, 1000}
+
 	if num == 0 {
 		return 0, ""
 	}
@@ -25,6 +16,15 @@ func getBiggest(num int) (int, string) {
 }
 
 func intToRoman(num int) string {
+	var sm = map[int]string{
+		4:   "IV", //4
+		9:   "IX", //9
+		40:  "XL", // 40
+		90:  "XC", // 90
+		400: "CD", // 400
+		900: "CM", // 900
+	}
+
 	if num == 0 {
 		return ""
 	}

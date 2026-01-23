@@ -1,6 +1,6 @@
 package main
 
-func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+func lowestCommonAncestor_236(root, p, q *TreeNode) *TreeNode {
 	if root == p || root == q || root == nil {
 		return root
 	}
@@ -11,7 +11,7 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 		2) 如果搜索整个树，直接用一个变量left、right接住返回值，
 			这个left、right后序还有逻辑处理的需要，也就是后序遍历中处理中间节点的逻辑（也是回溯）。
 	*/
-	l, r := lowestCommonAncestor(root.Left, p, q), lowestCommonAncestor(root.Right, p, q)
+	l, r := lowestCommonAncestor_236(root.Left, p, q), lowestCommonAncestor_236(root.Right, p, q)
 	if l != nil && r != nil {
 		return root
 	}

@@ -1,6 +1,6 @@
 package main
 
-func removeDuplicates(nums []int) int {
+func removeDuplicates_26(nums []int) int {
 	// 双指针
 	n := len(nums)
 	slow := 1

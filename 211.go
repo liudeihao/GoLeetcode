@@ -4,7 +4,7 @@ type WordDictionary struct {
 	ms map[string]bool
 }
 
-func Constructor() WordDictionary {
+func Constructor_211() WordDictionary {
 	return WordDictionary{ms: map[string]bool{}}
 }
 

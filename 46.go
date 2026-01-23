@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func permute(nums []int) [][]int {
 	n := len(nums)
 	var ans [][]int
@@ -29,8 +27,4 @@ func permute(nums []int) [][]int {
 	}
 	backtrack()
 	return ans
-}
-
-func main() {
-	fmt.Println(permute([]int{1, 2, 3}))
 }

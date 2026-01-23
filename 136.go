@@ -1,6 +1,6 @@
 package main
 
-func singleNumber(nums []int) int {
+func singleNumber_136(nums []int) int {
 	var ans int
 	for _, num := range nums {
 		ans ^= num

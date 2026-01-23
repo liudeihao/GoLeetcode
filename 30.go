@@ -53,9 +53,3 @@ func findSubstring(s string, words []string) []int {
 	}
 	return ans
 }
-
-func main() {
-	s := "wordgoodgoodgoodbestword"
-	words := []string{"word", "good", "best", "good"}
-	fmt.Println(findSubstring(s, words))
-}

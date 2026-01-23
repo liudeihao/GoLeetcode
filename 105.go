@@ -1,6 +1,6 @@
 package main
 
-func buildTree(preorder []int, inorder []int) *TreeNode {
+func buildTree_105(preorder []int, inorder []int) *TreeNode {
 	n := len(preorder)
 	if n == 0 {
 		return nil
@@ -18,7 +18,7 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	}
 	return &TreeNode{
 		preorder[0],
-		buildTree(preorder[1:llen+1], inorder[:llen]),
-		buildTree(preorder[llen+1:], inorder[llen+1:]),
+		buildTree_105(preorder[1:llen+1], inorder[:llen]),
+		buildTree_105(preorder[llen+1:], inorder[llen+1:]),
 	}
 }

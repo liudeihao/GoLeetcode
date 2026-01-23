@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func generateParenthesis(n int) []string {
 	var ans []string
 	var path []byte
@@ -27,8 +25,4 @@ func generateParenthesis(n int) []string {
 	}
 	backtrack()
 	return ans
-}
-
-func main() {
-	fmt.Println(generateParenthesis(3))
 }

@@ -1,14 +1,14 @@
 package main
 
-type Node struct {
+type Node_589 struct {
 	Val      int
-	Children []*Node
+	Children []*Node_589
 }
 
-func preorder(root *Node) []int {
+func preorder(root *Node_589) []int {
 	var ans []int
-	var traverse func(root *Node)
-	traverse = func(root *Node) {
+	var traverse func(root *Node_589)
+	traverse = func(root *Node_589) {
 		if root == nil {
 			return
 		}

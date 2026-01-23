@@ -5,7 +5,7 @@ type BSTIterator struct {
 	cur   *TreeNode
 }
 
-func Constructor(root *TreeNode) BSTIterator {
+func Constructor_173(root *TreeNode) BSTIterator {
 	return BSTIterator{cur: root}
 }
 

@@ -1,6 +1,6 @@
 package main
 
-func rob(nums []int) int {
+func rob_198(nums []int) int {
 	dpVisit, dpSkip := 0, 0
 	for _, v := range nums {
 		dpSkip, dpVisit = dpVisit, max(dpVisit, dpSkip+v)

@@ -15,7 +15,3 @@ func maxSubArray(nums []int) int {
 	}
 	return ans
 }
-
-func main() {
-	maxSubArray([]int{5, 4, -1, 7, 8})
-}

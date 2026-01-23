@@ -1,16 +1,16 @@
 package main
 
-type Node struct {
+type Node_429 struct {
 	Val      int
-	Children []*Node
+	Children []*Node_429
 }
 
-func levelOrder(root *Node) [][]int {
+func levelOrder_429(root *Node_429) [][]int {
 	if root == nil {
 		return [][]int{}
 	}
 	var ans [][]int
-	var q []*Node
+	var q []*Node_429
 	q = append(q, root)
 	for len(q) != 0 {
 		cq := q

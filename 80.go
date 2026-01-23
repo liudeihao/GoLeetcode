@@ -1,6 +1,6 @@
 package main
 
-func removeDuplicates(nums []int) int {
+func removeDuplicates_80(nums []int) int {
 	// 要删除的nums[i]会满足nums[i]==nums[i-2]
 	n := len(nums)
 	if n <= 2 {

@@ -1,24 +1,24 @@
 package main
 
-type Queue struct {
+type Queue_433 struct {
 	items []string
 }
 
-func (q *Queue) Push(x string) {
+func (q *Queue_433) Push(x string) {
 	q.items = append(q.items, x)
 }
 
-func (q *Queue) Pop() string {
+func (q *Queue_433) Pop() string {
 	ret := q.items[0]
 	q.items = q.items[1:]
 	return ret
 }
 
-func (q *Queue) Empty() bool {
+func (q *Queue_433) Empty() bool {
 	return len(q.items) == 0
 }
 
-func (q *Queue) Len() int {
+func (q *Queue_433) Len() int {
 	return len(q.items)
 }
 
@@ -35,7 +35,7 @@ func diffOneChar(s1, s2 string) bool {
 func minMutation(startGene string, endGene string, bank []string) int {
 	var si = map[string]int{}
 	si[startGene] = 0
-	q := Queue{}
+	q := Queue_433{}
 	q.Push(startGene)
 	depth := 0
 	for !q.Empty() {
