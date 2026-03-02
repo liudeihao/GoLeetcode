@@ -1,6 +1,6 @@
 package main
 
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func merge_88(nums1 []int, m int, nums2 []int, n int) {
 	p, q := m-1, n-1
 	i := m + n - 1
 	for ; p >= 0 && q >= 0; i-- {
