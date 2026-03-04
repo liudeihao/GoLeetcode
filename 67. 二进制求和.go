@@ -12,7 +12,7 @@ func addBinary(a string, b string) string {
     for i := 1; i <= nb; i++ {
         ia := na - i
         ib := nb - i
-        va, vb := int(a[ia]-'0'), int(b[ib]-com'0')
+        va, vb := int(a[ia]-'0'), int(b[ib]-'0')
         curbit := (va + vb + carry) & 1
         carry = (va + vb + carry) >> 1
         ans[pc] = byte(curbit + '0')
