@@ -25,7 +25,7 @@ type MyStack struct {
 	q Queue
 }
 
-func Constructor() MyStack {
+func Constructor_225() MyStack {
 	return MyStack{}
 }
 
@@ -59,7 +59,7 @@ func (this *MyStack) Empty() bool {
 
 /**
  * Your MyStack object will be instantiated and called as such:
- * obj := Constructor();
+ * obj := Constructor_225();
  * obj.Push(x);
  * param_2 := obj.Pop();
  * param_3 := obj.Top();
