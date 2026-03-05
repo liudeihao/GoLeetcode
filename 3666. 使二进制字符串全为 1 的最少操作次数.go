@@ -1,6 +1,6 @@
 package main
 
-func minOperations(s string, k int) int {
+func minOperations_3666(s string, k int) int {
     n := len(s)
     ones := 0
     for _, c := range s {
