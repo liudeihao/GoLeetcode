@@ -2,7 +2,7 @@ package main
 
 import "slices"
 
-func rotate(nums []int, k int) {
+func rotate_189(nums []int, k int) {
 	k = k % len(nums)
 	slices.Reverse(nums)
 	slices.Reverse(nums[:k])

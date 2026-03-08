@@ -1,16 +1,15 @@
 package main
 
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{-1, head}
+	dummy := &ListNode{Next: head}
 	slow, fast := dummy, dummy
-
 	for n > 0 {
-		n--
 		fast = fast.Next
+		n--
 	}
 	for fast.Next != nil {
-		fast = fast.Next
 		slow = slow.Next
+		fast = fast.Next
 	}
 	slow.Next = slow.Next.Next
 	return dummy.Next

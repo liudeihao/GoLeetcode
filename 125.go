@@ -12,7 +12,7 @@ func keepAlphas(s string) string {
 	return string(sb)
 }
 
-func isPalindrome(s string) bool {
+func isPalindrome_125(s string) bool {
 	s = keepAlphas(s)
 	l, r := 0, len(s)-1
 	for l < r {
