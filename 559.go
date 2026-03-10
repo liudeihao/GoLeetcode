@@ -5,7 +5,7 @@ type Node_559 struct {
 	Children []*Node_559
 }
 
-func maxDepth(root *Node_559) int {
+func maxDepth_559(root *Node_559) int {
 	if root == nil {
 		return 0
 	}
